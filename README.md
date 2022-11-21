@@ -40,8 +40,8 @@ import { personalCode, companyCode } from "lt-codes";
 ### Example
 ```js
 const code = "39001010000"; // example
-const generatedCode = ltCodes.personalCode.generate();
-const { valid, isException, error } = ltCodes.personalCode.validate(code);
+const generatedCode = personalCode.generate();
+const { valid, isException, error } = personalCode.validate(code);
 ```
 
 ### Response
@@ -63,8 +63,8 @@ const { valid, isException, error } = ltCodes.personalCode.validate(code);
 ### Example
 ```js
 const code = "123456789"; // example
-const generatedCode = ltCodes.companyCode.generate();
-const { valid, isException, error } = ltCodes.companyCode.validate(code);
+const generatedCode = companyCode.generate();
+const { valid, isException, error } = companyCode.validate(code);
 ```
 
 ### Response
