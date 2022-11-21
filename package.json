@@ -13,6 +13,7 @@
   },
   "author": "Pranciškus Ambrazas",
   "license": "MIT",
+  "types": "./index.d.ts",
   "bugs": {
     "url": "https://github.com/ambrazasp/lt-codes/issues"
   },

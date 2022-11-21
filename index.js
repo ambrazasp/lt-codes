@@ -20,4 +20,10 @@ export const companyCode = {
   generate: generateCompanyCode,
 };
 
-export const errorTypes = CODE_ERRORS;
+export const CodeError = CODE_ERRORS;
+
+module.exports = {
+  personalCode,
+  companyCode,
+  errorTypes,
+};
