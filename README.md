@@ -42,14 +42,14 @@ import { personalCode, companyCode } from "lt-codes";
 ```js
 const code = "39001010000"; // example
 const generatedCode = personalCode.generate();
-const { valid, isException, error } = personalCode.validate(code);
+const { isValid, isException, error } = personalCode.validate(code);
 ```
 
 ### Response
 
 ```json
 {
-  "valid": true,
+  "isValid": true,
   "error": "",
   "isException": true
 }
@@ -67,14 +67,14 @@ const { valid, isException, error } = personalCode.validate(code);
 ```js
 const code = "123456789"; // example
 const generatedCode = companyCode.generate();
-const { valid, isException, error } = companyCode.validate(code);
+const { isValid, isException, error } = companyCode.validate(code);
 ```
 
 ### Response
 
 ```json
 {
-  "valid": true,
+  "isValid": true,
   "error": "",
   "isException": false
 }
