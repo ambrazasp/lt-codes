@@ -20,13 +20,6 @@ declare namespace LtCodes {
     validate(code: string): ValidationResult;
     generate(): string;
   };
-
-  // var errorTypes: {
-  //   EMPTY: "EMPTY";
-  //   INVALID: "INVALID";
-  //   INVALID_CONTROL_NUMBER: "INVALID_CONTROL_NUMBER";
-  //   INVALID_DATE: "INVALID_DATE";
-  // };
 }
 
 export = LtCodes;

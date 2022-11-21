@@ -8,11 +8,11 @@ export function getControlNumber(numbers, firstMultiplier = 1) {
 
 export function resultHandler(errorType = "", isException = false) {
   if (!errorType) {
-    return { valid: true, isException };
+    return { isValid: true, isException };
   }
 
   return {
-    valid: false,
+    isValid: false,
     error: errorType,
   };
 }
