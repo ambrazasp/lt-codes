@@ -1,0 +1,23 @@
+{
+  "name": "lt-codes",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ambrazasp/lt-codes.git"
+  },
+  "author": "Pranciškus Ambrazas",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ambrazasp/lt-codes/issues"
+  },
+  "homepage": "https://github.com/ambrazasp/lt-codes#readme",
+  "dependencies": {
+    "moment": "^2.29.4"
+  }
+}
