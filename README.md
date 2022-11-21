@@ -85,7 +85,7 @@ const { valid, isException, error } = companyCode.validate(code);
 You can import all error types from `lt-codes` as use as constants.
 
 ```js
-import { errorTypes } from "lt-codes";
+import { CodeError } from "lt-codes";
 ```
 
 | Key                      | Description                         |
