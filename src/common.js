@@ -17,11 +17,10 @@ function resultHandler(errorType = "", isException = false) {
   };
 }
 
-function randomNumberToString(count = 3) {
-  const maxNumber = Math.pow(10, count);
-  return ("0".repeat(count) + Math.floor(Math.random() * maxNumber)).slice(
-    -count
-  );
+function randomNumberToString(length = 3) {
+  const maxNumber = Math.pow(10, length);
+  const randNumber = Math.floor(Math.random() * maxNumber).toString();
+  return randNumber.padStart(length, "0");
 }
 
 const VALIDATION_ERRORS = {
