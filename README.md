@@ -32,10 +32,10 @@ import { personalCode, companyCode } from "lt-codes";
 
 ## Personal code
 
-| Function                 | Description             |
-| ------------------------ | ----------------------- |
-| `validate(code: string)` | Validates personal code |
-| `generate()`             | Generates personal code |
+| Function                              | Description             |
+| ------------------------------------- | ----------------------- |
+| `personalCode.validate(code: string)` | Validates personal code |
+| `personalCode.generate()`             | Generates personal code |
 
 ### Example
 
@@ -45,7 +45,7 @@ const generatedCode = personalCode.generate();
 const { isValid, isException, error } = personalCode.validate(code);
 ```
 
-### Response
+### Response (example)
 
 ```json
 {
@@ -55,12 +55,19 @@ const { isValid, isException, error } = personalCode.validate(code);
 }
 ```
 
+### Using Typescript
+
+```ts
+import { ValidationResult } from "lt-codes";
+const result: ValidationResult = personalCode.validate(code);
+```
+
 ## Company code
 
-| Function                 | Description            |
-| ------------------------ | ---------------------- |
-| `validate(code: string)` | Validates company code |
-| `generate()`             | Generates company code |
+| Function                             | Description            |
+| ------------------------------------ | ---------------------- |
+| `companyCode.validate(code: string)` | Validates company code |
+| `companyCode.generate()`             | Generates company code |
 
 ### Example
 
@@ -70,7 +77,7 @@ const generatedCode = companyCode.generate();
 const { isValid, isException, error } = companyCode.validate(code);
 ```
 
-### Response
+### Response (example)
 
 ```json
 {
@@ -80,17 +87,26 @@ const { isValid, isException, error } = companyCode.validate(code);
 }
 ```
 
+### Using Typescript
+
+```ts
+import { ValidationResult } from "lt-codes";
+const result: ValidationResult = companyCode.validate(code);
+```
+
 # Errors
 
 You can import all error types from `lt-codes` as use as constants.
 
 ```js
-import { CodeError } from "lt-codes";
+import { ValidationError } from "lt-codes";
 ```
 
-| Key                      | Description                         |
-| ------------------------ | ----------------------------------- |
-| `EMPTY`                  | Code not passed (empty)             |
-| `INVALID`                | Do not pass regex checker           |
-| `INVALID_CONTROL_NUMBER` | Invalid control number (last digit) |
-| `INVALID_DATE`           | Invalid user birth date             |
+`error` property returned by `validate()` can be empty or one of the following values:
+
+| Value                                    | Description                         |
+| ---------------------------------------- | ----------------------------------- |
+| `ValidationError.EMPTY`                  | Code not passed (empty)             |
+| `ValidationError.INVALID`                | Do not pass regex checker           |
+| `ValidationError.INVALID_CONTROL_NUMBER` | Invalid control number (last digit) |
+| `ValidationError.INVALID_DATE`           | Invalid user birth date             |
