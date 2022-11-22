@@ -1,16 +1,17 @@
 declare namespace LtCodes {
-  export enum CodeError {
+  enum ValidationError {
     EMPTY = "EMPTY",
     INVALID = "INVALID",
     INVALID_CONTROL_NUMBER = "INVALID_CONTROL_NUMBER",
     INVALID_DATE = "INVALID_DATE",
   }
 
-  interface ValidationResult {
+  export interface ValidationResult {
     isValid: boolean;
-    error?: CodeError;
+    error?: ValidationError;
     isException?: boolean;
   }
+
   var companyCode: {
     validate(code: string): ValidationResult;
     generate(): string;

@@ -1,29 +1,9 @@
-import {
-  validate as validatePersonalCode,
-  generate as generatePersonalCode,
-} from "./src/person.js";
-
-import {
-  validate as validateCompanyCode,
-  generate as generateCompanyCode,
-} from "./src/company.js";
-
-import { CODE_ERRORS } from "./src/common.js";
-
-export const personalCode = {
-  validate: validatePersonalCode,
-  generate: generatePersonalCode,
-};
-
-export const companyCode = {
-  validate: validateCompanyCode,
-  generate: generateCompanyCode,
-};
-
-export const CodeError = CODE_ERRORS;
+const person = require("./src/person");
+const company = require("./src/company");
+const common = require("./src/common");
 
 module.exports = {
-  personalCode,
-  companyCode,
-  errorTypes,
+  ValidationError: common.VALIDATION_ERRORS,
+  personalCode: person,
+  companyCode: company,
 };

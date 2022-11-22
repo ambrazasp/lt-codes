@@ -1,10 +1,12 @@
-import moment from "moment";
-import {
+const moment = require("moment");
+const common = require("./common");
+
+const {
+  VALIDATION_ERRORS,
   getControlNumber,
   resultHandler,
   randomNumberToString,
-  CODE_ERRORS,
-} from "./common.js";
+} = common;
 
 const randomDate = (start, end) => {
   const endTime = +moment(end);
@@ -21,7 +23,7 @@ const randomDate = (start, end) => {
   return moment(randomNumber(endTime));
 };
 
-const generateControlNumber = (value) => {
+const getPersonControlNumber = (value) => {
   const numbersArray = value.split("").map((i) => Number(i));
 
   // first check
@@ -42,13 +44,13 @@ const generateControlNumber = (value) => {
   return secondControlNumber;
 };
 
-export function validate(code) {
+function validate(code) {
   if (!code) {
-    return resultHandler(CODE_ERRORS.EMPTY);
+    return resultHandler(VALIDATION_ERRORS.EMPTY);
   }
 
   if (!/^[1-6,9][0-9]{10}$/.test(code)) {
-    return resultHandler(CODE_ERRORS.INVALID);
+    return resultHandler(VALIDATION_ERRORS.INVALID);
   }
 
   const regex = new RegExp(
@@ -78,10 +80,10 @@ export function validate(code) {
   const dateIsValid = moment(`${year}-${month}-${day}`, "YYYY-MM-DD").isValid();
 
   if (!dateIsValid) {
-    return resultHandler(CODE_ERRORS.INVALID_DATE);
+    return resultHandler(VALIDATION_ERRORS.INVALID_DATE);
   }
 
-  const generatedControlNumber = generateControlNumber(
+  const generatedControlNumber = getPersonControlNumber(
     code.slice(0, code.length - 1)
   );
 
@@ -89,10 +91,10 @@ export function validate(code) {
     return resultHandler();
   }
 
-  return resultHandler(CODE_ERRORS.INVALID_CONTROL_NUMBER);
+  return resultHandler(VALIDATION_ERRORS.INVALID_CONTROL_NUMBER);
 }
 
-export function generate() {
+function generate() {
   const randDate = randomDate("1900-01-01", moment());
 
   const randSex = Math.floor(Math.random() * 2);
@@ -106,7 +108,12 @@ export function generate() {
 
   const withoutControlNumber = `${sexes[randSex]}${date}${randQueueNumber}`;
 
-  const generatedControlNumber = generateControlNumber(withoutControlNumber);
+  const generatedControlNumber = getPersonControlNumber(withoutControlNumber);
 
   return `${withoutControlNumber}${generatedControlNumber}`;
 }
+
+module.exports = {
+  validate,
+  generate,
+};
