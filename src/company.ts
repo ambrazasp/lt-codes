@@ -14,12 +14,12 @@ export function validate(code: string) {
     return resultHandler(VALIDATION_ERRORS.INVALID);
   }
 
-  const regex = new RegExp("^([0-9]{8})([0-9])$", "gi");
+  const regex = new RegExp('^([0-9]{8})([0-9])$', 'gi');
   const [_, __, controlNumber] = regex.exec(code);
 
   const numbersArray = code
     .slice(0, code.length - 1)
-    .split("")
+    .split('')
     .map((i) => Number(i));
 
   // check
@@ -35,7 +35,9 @@ export function validate(code: string) {
 export function generate(): any {
   const withoutControlNumber = randomNumberToString(8);
 
-  const numbersArray = withoutControlNumber.split("").map((i: any) => Number(i));
+  const numbersArray = withoutControlNumber
+    .split('')
+    .map((i: any) => Number(i));
 
   const generatedControlNumber = getControlNumber(numbersArray);
   if (generatedControlNumber < 10) {
@@ -44,4 +46,3 @@ export function generate(): any {
 
   return generate();
 }
-

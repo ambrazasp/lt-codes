@@ -27,7 +27,7 @@ yarn add ambrazasp/lt-codes
 ## Initialize
 
 ```js
-import { personalCode, companyCode } from "lt-codes";
+import { personalCode, companyCode } from 'lt-codes';
 ```
 
 ## Personal code
@@ -40,7 +40,7 @@ import { personalCode, companyCode } from "lt-codes";
 ### Example
 
 ```js
-const code = "39001010000"; // example
+const code = '39001010000'; // example
 const generatedCode = personalCode.generate();
 const { isValid, isException, error } = personalCode.validate(code);
 ```
@@ -58,7 +58,7 @@ const { isValid, isException, error } = personalCode.validate(code);
 ### Using Typescript
 
 ```ts
-import { ValidationResult } from "lt-codes";
+import { ValidationResult } from 'lt-codes';
 const result: ValidationResult = personalCode.validate(code);
 ```
 
@@ -72,7 +72,7 @@ const result: ValidationResult = personalCode.validate(code);
 ### Example
 
 ```js
-const code = "123456789"; // example
+const code = '123456789'; // example
 const generatedCode = companyCode.generate();
 const { isValid, isException, error } = companyCode.validate(code);
 ```
@@ -90,7 +90,7 @@ const { isValid, isException, error } = companyCode.validate(code);
 ### Using Typescript
 
 ```ts
-import { ValidationResult } from "lt-codes";
+import { ValidationResult } from 'lt-codes';
 const result: ValidationResult = companyCode.validate(code);
 ```
 
@@ -99,7 +99,7 @@ const result: ValidationResult = companyCode.validate(code);
 You can import all error types from `lt-codes` as use as constants.
 
 ```js
-import { ValidationError } from "lt-codes";
+import { ValidationError } from 'lt-codes';
 ```
 
 `error` property returned by `validate()` can be empty or one of the following values:

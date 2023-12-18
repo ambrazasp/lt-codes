@@ -1,4 +1,3 @@
-
 import * as company from './src/company';
 import * as common from './src/common';
 import * as person from './src/person';

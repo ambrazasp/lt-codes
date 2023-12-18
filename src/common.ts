@@ -6,7 +6,7 @@ export function getControlNumber(numbers: number[], firstMultiplier = 1) {
   );
 }
 
-export function resultHandler(errorType = "", isException = false) {
+export function resultHandler(errorType = '', isException = false) {
   if (!errorType) {
     return { isValid: true, isException };
   }
@@ -21,13 +21,12 @@ export function randomNumberToString(length = 3) {
   const maxNumber = Math.pow(10, length);
   const randNumber = Math.floor(Math.random() * maxNumber).toString();
   // @ts-ignore
-  return randNumber.padStart(length, "0");
+  return randNumber.padStart(length, '0');
 }
 
 export const VALIDATION_ERRORS = {
-  EMPTY: "EMPTY",
-  INVALID: "INVALID",
-  INVALID_CONTROL_NUMBER: "INVALID_CONTROL_NUMBER",
-  INVALID_DATE: "INVALID_DATE",
+  EMPTY: 'EMPTY',
+  INVALID: 'INVALID',
+  INVALID_CONTROL_NUMBER: 'INVALID_CONTROL_NUMBER',
+  INVALID_DATE: 'INVALID_DATE',
 };
-

@@ -1,4 +1,4 @@
-import moment, { Moment } from 'moment'
+import moment, { Moment } from 'moment';
 
 import {
   VALIDATION_ERRORS,
@@ -15,7 +15,7 @@ const randomDate = (start: string | Moment, end: string | Moment) => {
   if (start) {
     const startTime = +moment(start);
     if (startTime > endTime) {
-      throw new Error("End date is before start date!");
+      throw new Error('End date is before start date!');
     }
     return moment(randomNumber(endTime, startTime));
   }
@@ -23,7 +23,7 @@ const randomDate = (start: string | Moment, end: string | Moment) => {
 };
 
 const getPersonControlNumber = (value: string) => {
-  const numbersArray = value.split("").map((i) => Number(i));
+  const numbersArray = value.split('').map((i) => Number(i));
 
   // first check
   const firstControlNumber = getControlNumber(numbersArray);
@@ -53,8 +53,8 @@ export function validate(code: string) {
   }
 
   const regex = new RegExp(
-    "^([1-6,9])([0-9]{2})([0-9]{2})([0-9]{2})[0-9]{3}([0-9])$",
-    "gi"
+    '^([1-6,9])([0-9]{2})([0-9]{2})([0-9]{2})[0-9]{3}([0-9])$',
+    'gi'
   );
 
   const [_, centurySex, yearShort, month, day, controlNumber] =
@@ -73,10 +73,10 @@ export function validate(code: string) {
 
   // exceptions for first number (9) and/or month/day that is '00'
   if (!year || monthDayException) {
-    return resultHandler("", true);
+    return resultHandler('', true);
   }
 
-  const dateIsValid = moment(`${year}-${month}-${day}`, "YYYY-MM-DD").isValid();
+  const dateIsValid = moment(`${year}-${month}-${day}`, 'YYYY-MM-DD').isValid();
 
   if (!dateIsValid) {
     return resultHandler(VALIDATION_ERRORS.INVALID_DATE);
@@ -94,7 +94,7 @@ export function validate(code: string) {
 }
 
 export function generate() {
-  const randDate = randomDate("1900-01-01", moment());
+  const randDate = randomDate('1900-01-01', moment());
 
   const randSex = Math.floor(Math.random() * 2);
   let sexes = [5, 6];
@@ -103,7 +103,7 @@ export function generate() {
   }
 
   const randQueueNumber = randomNumberToString(3);
-  const date = randDate.format("YYMMDD");
+  const date = randDate.format('YYMMDD');
 
   const withoutControlNumber = `${sexes[randSex]}${date}${randQueueNumber}`;
 
@@ -111,4 +111,3 @@ export function generate() {
 
   return `${withoutControlNumber}${generatedControlNumber}`;
 }
-
