@@ -1,16 +1,15 @@
-const moment = require("moment");
-const common = require("./common");
+import moment, { Moment } from 'moment'
 
-const {
+import {
   VALIDATION_ERRORS,
   getControlNumber,
   resultHandler,
   randomNumberToString,
-} = common;
+} from './common';
 
-const randomDate = (start, end) => {
+const randomDate = (start: string | Moment, end: string | Moment) => {
   const endTime = +moment(end);
-  const randomNumber = (to, from = 0) =>
+  const randomNumber = (to: number, from = 0) =>
     Math.floor(Math.random() * (to - from) + from);
 
   if (start) {
@@ -23,7 +22,7 @@ const randomDate = (start, end) => {
   return moment(randomNumber(endTime));
 };
 
-const getPersonControlNumber = (value) => {
+const getPersonControlNumber = (value: string) => {
   const numbersArray = value.split("").map((i) => Number(i));
 
   // first check
@@ -44,7 +43,7 @@ const getPersonControlNumber = (value) => {
   return secondControlNumber;
 };
 
-function validate(code) {
+export function validate(code: string) {
   if (!code) {
     return resultHandler(VALIDATION_ERRORS.EMPTY);
   }
@@ -94,7 +93,7 @@ function validate(code) {
   return resultHandler(VALIDATION_ERRORS.INVALID_CONTROL_NUMBER);
 }
 
-function generate() {
+export function generate() {
   const randDate = randomDate("1900-01-01", moment());
 
   const randSex = Math.floor(Math.random() * 2);
@@ -113,7 +112,3 @@ function generate() {
   return `${withoutControlNumber}${generatedControlNumber}`;
 }
 
-module.exports = {
-  validate,
-  generate,
-};

@@ -1,4 +1,4 @@
-function getControlNumber(numbers, firstMultiplier = 1) {
+export function getControlNumber(numbers: number[], firstMultiplier = 1) {
   return (
     numbers
       .map((item, index) => item * (((index + firstMultiplier - 1) % 9) + 1))
@@ -6,7 +6,7 @@ function getControlNumber(numbers, firstMultiplier = 1) {
   );
 }
 
-function resultHandler(errorType = "", isException = false) {
+export function resultHandler(errorType = "", isException = false) {
   if (!errorType) {
     return { isValid: true, isException };
   }
@@ -17,22 +17,17 @@ function resultHandler(errorType = "", isException = false) {
   };
 }
 
-function randomNumberToString(length = 3) {
+export function randomNumberToString(length = 3) {
   const maxNumber = Math.pow(10, length);
   const randNumber = Math.floor(Math.random() * maxNumber).toString();
+  // @ts-ignore
   return randNumber.padStart(length, "0");
 }
 
-const VALIDATION_ERRORS = {
+export const VALIDATION_ERRORS = {
   EMPTY: "EMPTY",
   INVALID: "INVALID",
   INVALID_CONTROL_NUMBER: "INVALID_CONTROL_NUMBER",
   INVALID_DATE: "INVALID_DATE",
 };
 
-module.exports = {
-  getControlNumber,
-  resultHandler,
-  randomNumberToString,
-  VALIDATION_ERRORS,
-};
