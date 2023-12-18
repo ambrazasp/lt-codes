@@ -50,7 +50,7 @@ jobs:
       - name: Download client
         uses: actions/download-artifact@v3
         with:
-          name: geojsonjs
+          name: lt-codes
 
       - uses: actions/setup-node@v3
         with:
