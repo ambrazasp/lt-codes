@@ -1,43 +1,50 @@
 # Lithuanian codes
 
-## Personal & company code validator and generator
+## Personal & company codes validator and generator
 
 _Lietuviškų asmens kodo / įmonės kodo tikrinimo bei generavimo funkcijos_
 
-# Table of Contents
+## Table of Contents
 
 - [Instalation](#instalation)
+- [Examples](#examples)
 - [Usage](#usage)
   - [Initialize in project](#initialize)
   - [Personal code](#personal-code)
   - [Company code](#company-code)
 - [Errors](#errors)
 
-# Instalation
+## Examples
 
-## Setup
+Examples can be found here:
+- [www.pranciskus.com/asmens-kodas](https://www.pranciskus.com/asmens-kodas) for validating and generating personal codes
+- [www.pranciskus.com/imones-kodas](https://www.pranciskus.com/imones-kodas) for validating and generating company codes
+
+## Instalation
+
+### Setup
 
 ```bash
-npm install ambrazasp/lt-codes
-yarn add ambrazasp/lt-codes
+npm install lt-codes
+yarn add lt-codes
 ```
 
-# Usage
+## Usage
 
-## Initialize
+### Initialize
 
 ```js
 import { personalCode, companyCode } from 'lt-codes';
 ```
 
-## Personal code
+### Personal code
 
 | Function                              | Description             |
 | ------------------------------------- | ----------------------- |
 | `personalCode.validate(code: string)` | Validates personal code |
 | `personalCode.generate()`             | Generates personal code |
 
-### Example
+#### Example
 
 ```js
 const code = '39001010000'; // example
@@ -45,7 +52,7 @@ const generatedCode = personalCode.generate();
 const { isValid, isException, error } = personalCode.validate(code);
 ```
 
-### Response (example)
+#### Response (example)
 
 ```json
 {
@@ -55,21 +62,21 @@ const { isValid, isException, error } = personalCode.validate(code);
 }
 ```
 
-### Using Typescript
+#### Using Typescript
 
 ```ts
 import { ValidationResult } from 'lt-codes';
 const result: ValidationResult = personalCode.validate(code);
 ```
 
-## Company code
+### Company code
 
 | Function                             | Description            |
 | ------------------------------------ | ---------------------- |
 | `companyCode.validate(code: string)` | Validates company code |
 | `companyCode.generate()`             | Generates company code |
 
-### Example
+#### Example
 
 ```js
 const code = '123456789'; // example
@@ -77,7 +84,7 @@ const generatedCode = companyCode.generate();
 const { isValid, isException, error } = companyCode.validate(code);
 ```
 
-### Response (example)
+#### Response (example)
 
 ```json
 {
@@ -87,14 +94,14 @@ const { isValid, isException, error } = companyCode.validate(code);
 }
 ```
 
-### Using Typescript
+#### Using Typescript
 
 ```ts
 import { ValidationResult } from 'lt-codes';
 const result: ValidationResult = companyCode.validate(code);
 ```
 
-# Errors
+## Errors
 
 You can import all error types from `lt-codes` as use as constants.
 

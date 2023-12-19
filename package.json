@@ -1,6 +1,6 @@
 {
   "name": "lt-codes",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Lithuanian codes. Personal & company code validator and generator",
   "main": "index.js",
   "typings": "index.d.ts",
