@@ -1,30 +1,29 @@
-const moment = require("moment");
-const common = require("./common");
+import moment, { Moment } from 'moment';
 
-const {
+import {
   VALIDATION_ERRORS,
   getControlNumber,
   resultHandler,
   randomNumberToString,
-} = common;
+} from './common';
 
-const randomDate = (start, end) => {
+const randomDate = (start: string | Moment, end: string | Moment) => {
   const endTime = +moment(end);
-  const randomNumber = (to, from = 0) =>
+  const randomNumber = (to: number, from = 0) =>
     Math.floor(Math.random() * (to - from) + from);
 
   if (start) {
     const startTime = +moment(start);
     if (startTime > endTime) {
-      throw new Error("End date is before start date!");
+      throw new Error('End date is before start date!');
     }
     return moment(randomNumber(endTime, startTime));
   }
   return moment(randomNumber(endTime));
 };
 
-const getPersonControlNumber = (value) => {
-  const numbersArray = value.split("").map((i) => Number(i));
+const getPersonControlNumber = (value: string) => {
+  const numbersArray = value.split('').map((i) => Number(i));
 
   // first check
   const firstControlNumber = getControlNumber(numbersArray);
@@ -44,7 +43,7 @@ const getPersonControlNumber = (value) => {
   return secondControlNumber;
 };
 
-function validate(code) {
+export function validate(code: string) {
   if (!code) {
     return resultHandler(VALIDATION_ERRORS.EMPTY);
   }
@@ -54,8 +53,8 @@ function validate(code) {
   }
 
   const regex = new RegExp(
-    "^([1-6,9])([0-9]{2})([0-9]{2})([0-9]{2})[0-9]{3}([0-9])$",
-    "gi"
+    '^([1-6,9])([0-9]{2})([0-9]{2})([0-9]{2})[0-9]{3}([0-9])$',
+    'gi'
   );
 
   const [_, centurySex, yearShort, month, day, controlNumber] =
@@ -74,10 +73,10 @@ function validate(code) {
 
   // exceptions for first number (9) and/or month/day that is '00'
   if (!year || monthDayException) {
-    return resultHandler("", true);
+    return resultHandler('', true);
   }
 
-  const dateIsValid = moment(`${year}-${month}-${day}`, "YYYY-MM-DD").isValid();
+  const dateIsValid = moment(`${year}-${month}-${day}`, 'YYYY-MM-DD').isValid();
 
   if (!dateIsValid) {
     return resultHandler(VALIDATION_ERRORS.INVALID_DATE);
@@ -94,8 +93,8 @@ function validate(code) {
   return resultHandler(VALIDATION_ERRORS.INVALID_CONTROL_NUMBER);
 }
 
-function generate() {
-  const randDate = randomDate("1900-01-01", moment());
+export function generate() {
+  const randDate = randomDate('1900-01-01', moment());
 
   const randSex = Math.floor(Math.random() * 2);
   let sexes = [5, 6];
@@ -104,7 +103,7 @@ function generate() {
   }
 
   const randQueueNumber = randomNumberToString(3);
-  const date = randDate.format("YYMMDD");
+  const date = randDate.format('YYMMDD');
 
   const withoutControlNumber = `${sexes[randSex]}${date}${randQueueNumber}`;
 
@@ -112,8 +111,3 @@ function generate() {
 
   return `${withoutControlNumber}${generatedControlNumber}`;
 }
-
-module.exports = {
-  validate,
-  generate,
-};

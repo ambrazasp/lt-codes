@@ -64,5 +64,10 @@ typings/
 # JetBrains IDE
 .idea
 
+eslint-results.sarif
+
 # Don't track transpiled files
 dist/
+
+# Remove generated files
+generated-sources

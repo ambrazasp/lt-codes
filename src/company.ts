@@ -1,13 +1,11 @@
-const common = require("./common");
-
-const {
+import {
   VALIDATION_ERRORS,
   getControlNumber,
   resultHandler,
   randomNumberToString,
-} = common;
+} from './common';
 
-function validate(code) {
+export function validate(code: string) {
   if (!code) {
     return resultHandler(VALIDATION_ERRORS.EMPTY);
   }
@@ -16,12 +14,12 @@ function validate(code) {
     return resultHandler(VALIDATION_ERRORS.INVALID);
   }
 
-  const regex = new RegExp("^([0-9]{8})([0-9])$", "gi");
+  const regex = new RegExp('^([0-9]{8})([0-9])$', 'gi');
   const [_, __, controlNumber] = regex.exec(code);
 
   const numbersArray = code
     .slice(0, code.length - 1)
-    .split("")
+    .split('')
     .map((i) => Number(i));
 
   // check
@@ -34,10 +32,12 @@ function validate(code) {
   return resultHandler(VALIDATION_ERRORS.INVALID_CONTROL_NUMBER);
 }
 
-function generate() {
+export function generate(): any {
   const withoutControlNumber = randomNumberToString(8);
 
-  const numbersArray = withoutControlNumber.split("").map((i) => Number(i));
+  const numbersArray = withoutControlNumber
+    .split('')
+    .map((i: any) => Number(i));
 
   const generatedControlNumber = getControlNumber(numbersArray);
   if (generatedControlNumber < 10) {
@@ -46,8 +46,3 @@ function generate() {
 
   return generate();
 }
-
-module.exports = {
-  validate,
-  generate,
-};
