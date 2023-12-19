@@ -1,7 +1,7 @@
 {
   "name": "lt-codes",
   "version": "1.0.1",
-  "description": "",
+  "description": "Lithuanian codes. Personal & company code validator and generator",
   "main": "index.js",
   "typings": "index.d.ts",
   "scripts": {
@@ -24,6 +24,22 @@
   "dependencies": {
     "moment": "^2.29.4"
   },
+  "keywords": [
+    "personal",
+    "company",
+    "asmens",
+    "imones",
+    "kodas",
+    "validator",
+    "generator",
+    "validacija",
+    "generavimas",
+    "lithuania",
+    "lithuanian-codes",
+    "lt",
+    "codes",
+    "code"
+  ],
   "devDependencies": {
     "@microsoft/eslint-formatter-sarif": "^3.0.0",
     "@types/node": "^20.10.5",
