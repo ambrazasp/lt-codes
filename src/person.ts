@@ -57,8 +57,9 @@ export function validate(code: string) {
     'gi'
   );
 
-  const [_, centurySex, yearShort, month, day, controlNumber] =
-    regex.exec(code);
+  const [_, centurySex, yearShort, month, day, controlNumber] = regex.exec(
+    code
+  ) as any[];
 
   let year;
   if (Number(centurySex) < 3) {

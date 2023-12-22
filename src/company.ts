@@ -15,7 +15,7 @@ export function validate(code: string) {
   }
 
   const regex = new RegExp('^([0-9]{8})([0-9])$', 'gi');
-  const [_, __, controlNumber] = regex.exec(code);
+  const [_, __, controlNumber] = regex.exec(code) as any[];
 
   const numbersArray = code
     .slice(0, code.length - 1)

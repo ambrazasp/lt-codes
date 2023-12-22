@@ -1,9 +1,7 @@
-import * as company from './src/company';
-import * as common from './src/common';
-import * as person from './src/person';
+import { VALIDATION_ERRORS } from './src/common';
 
-export default {
-  ValidationError: common.VALIDATION_ERRORS,
-  personalCode: person,
-  companyCode: company,
-};
+export const ValidationError = VALIDATION_ERRORS;
+
+export * as companyCode from './src/company';
+export * as personalCode from './src/person';
+
